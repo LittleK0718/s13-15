@@ -64,11 +64,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var sbRabbit: SeekBar
     private lateinit var sbTurtle: SeekBar
 
-    //動畫
-    private lateinit var ivRabbit: ImageView
-    private lateinit var ivTurtle: ImageView
-    private var rabbitAnimator: ObjectAnimator? = null
-    private var turtleAnimator: ObjectAnimator? = null
+//    //動畫
+//    private lateinit var ivRabbit: ImageView
+//    private lateinit var ivTurtle: ImageView
+//    private var rabbitAnimator: ObjectAnimator? = null
+//    private var turtleAnimator: ObjectAnimator? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -91,9 +91,9 @@ class MainActivity : AppCompatActivity() {
         tvturulespeed = findViewById(R.id.tvTurtleSpeedValue)
         setupSpeedControls()
 
-        //動畫
-        ivRabbit= findViewById(R.id.ivRabbit)
-        ivTurtle=findViewById(R.id.ivTurtle)
+//        //動畫
+//        ivRabbit= findViewById(R.id.ivRabbit)
+//        ivTurtle=findViewById(R.id.ivTurtle)
 
 
         //
@@ -109,34 +109,34 @@ class MainActivity : AppCompatActivity() {
         // 對開始按鈕設定監聽器
         btnStart.setOnClickListener {
 
+            // 進行賽跑後按鈕不可被操作
+            btnStart.isEnabled = false
+            // 初始化兔子的賽跑進度
+            progressRabbit = 0
+            // 初始化烏龜的賽跑進度
+            progressTurtle = 0
+            // 初始化兔子的SeekBar進度
+            sbRabbit.progress = 0
+            // 初始化烏龜的SeekBar進度
+            sbTurtle.progress = 0
+            // 兔子起跑
+            runRabbit()
+            // 烏龜起跑
+            runTurtle()
 
-//            // 兔子起跑
-//            runRabbit()
-//            // 烏龜起跑
-//            runTurtle()
-//
-//
-//            setupRaceSeekBar()
-            startRace()
+
+        setupRaceSeekBar()
+//            startRace()
         }
     }
 
-    private fun startRace(){
-        // 進行賽跑後按鈕不可被操作
-        btnStart.isEnabled = false
-        // 初始化兔子的賽跑進度
-        progressRabbit = 0
-        // 初始化烏龜的賽跑進度
-        progressTurtle = 0
-        // 初始化兔子的SeekBar進度
-        sbRabbit.progress = 0
-        // 初始化烏龜的SeekBar進度
-        sbTurtle.progress = 0
-
-        //重製
-        resetanimalPosition()
-        animaReStartButton()
-    }
+//    private fun startRace(){
+//
+//
+//        //重製
+//        resetanimalPosition()
+//        animaReStartButton()
+//    }
 
     private fun setupspn() {
         val matchOption = arrayOf("1戰1勝", "3戰2勝", "5戰3勝", "7戰4勝")
