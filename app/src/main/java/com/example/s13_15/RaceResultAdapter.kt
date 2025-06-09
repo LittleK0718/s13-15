@@ -1,5 +1,7 @@
 package com.example.s13_15
 
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +20,8 @@ class RaceResultAdapter(private val results: List<RaceResult>) :
         val tvTime: TextView = itemView.findViewById(R.id.tvTime)
         val pbrabbit:ProgressBar=itemView.findViewById(R.id.progressBar)
         val pbturtle:ProgressBar=itemView.findViewById(R.id.progressBar2)
+        val tv3:TextView=itemView.findViewById(R.id.tv3)
+        val tv4:TextView=itemView.findViewById(R.id.tv4)
     }
 
 
@@ -33,7 +37,12 @@ class RaceResultAdapter(private val results: List<RaceResult>) :
         holder.tvTime.text = result.timestamps
         val winnerImage = if (result.winner == "兔子") R.drawable.rabbit else R.drawable.turtle
         holder.ivWinner.setImageResource(winnerImage)
-        
+        holder.pbrabbit.progressDrawable.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN)
+        holder.pbturtle.progressDrawable.setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN)
+        holder.pbrabbit.progress=result.rabbit
+        holder.pbturtle.progress=result.turtle
+        holder.tv3.text="${result.rabbit}%"
+        holder.tv4.text="${result.turtle}%"
     }
 
     override fun getItemCount(): Int = results.size
